@@ -6,7 +6,7 @@ function App() {
     <div className="App">
       <Navbar />
       <Images />
-      <LogoWrap />
+      {/* <LogoWrap /> */}
     </div>
   );
 }
