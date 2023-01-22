@@ -1,44 +1,75 @@
 @import '../../mixin.sass'
 
 .img-wrap
-  margin: 20px auto 0
+  margin: 40px auto 0
   position: relative
-  max-width: 40vw
-  height: 40vw
+  max-width: 70vw
+  height: calc(100vh - 105px)
   +rwdmax(767)
     margin-top: 20px
-    max-width: 80vw
+    max-width: 100vw
     height: 80vw
 .img-box
   width: 100%
-  +img($p: 100%)
+  +img($p: 56.25%)
   border-radius: 30px
   position: absolute
   top: 0
-  left: 0
-  transition: transform 1s
+  left: 50%
+  transform: translate(-50%, 0)
+  transition: transform 1s ease-in-out, width 1s ease-in
   overflow: hidden
   z-index: 1
   &.first
-    transform: translateY(200px)
+    transform: translate(-50%, 200px)
     z-index: 5
     .text
       opacity: 1
       transform: translate(-50%, -50%)
   &.second
-    transform: translateY(150px)
+    max-width: 95%
+    transform: translate(-50%, 150px)
     z-index: 4
   &.third
-    transform: translateY(100px)
+    max-width: 90%
+    transform: translate(-50%, 100px)
     z-index: 3
   &.fourth
-    transform: translateY(50px)
+    max-width: 85%
+    transform: translate(-50%, 50px)
     z-index: 2
-
+  &.fifth
+    max-width: 80%
+    transform: translate(-50%, 0)
+    z-index: 1
+  +rwdmax(767)
+    &.first
+      max-width: 95%
+      transform: translate(-50%, 120px)
+    &.second
+      max-width: 85%
+      transform: translate(-50%, 90px)
+    &.third
+      max-width: 75%
+      transform: translate(-50%, 60px)
+    &.fourth
+      max-width: 65%
+      transform: translate(-50%, 30px)
+    &.fifth
+      max-width: 55%
+      transform: translate(-50%, 0)
 .text
   +posCenter
   color: #fff
   font-size: max(2.6vw, 20px)
   opacity: 0
   transform: translate(-50%, calc(-50% + 20px))
-  transition: all 1s
+  transition: all 1s ease-in-out
+
+.bg
+  position: fixed
+  top: 0
+  left: 0
+  z-index: -1
+  width: 100vw
+  height: 100vh

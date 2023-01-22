@@ -1,18 +1,22 @@
 import './images.styles.sass';
+import React, { useEffect, useState } from "react";
 import pictureArr from '../picture/picture.component'
 import gsap from 'gsap'
 import { Observer } from "gsap/Observer";
 gsap.registerPlugin(Observer);
 
-Observer.create({
-  target: window,         // can be any element (selector text is fine)
-  type: "wheel,touch",    // comma-delimited list of what to listen for ("wheel,touch,scroll,pointer")
-  onUp: () => goUp(),
-  onDown: () => goDown()
-});
+const gsapObserver = () => {
+  const imgWrap = document.querySelector('.img-wrap')
 
+  Observer.create({
+    target: imgWrap,         // can be any element (selector text is fine)
+    type: "wheel,touch",    // comma-delimited list of what to listen for ("wheel,touch,scroll,pointer")
+    onUp: () => goUp(),
+    onDown: () => goDown()
+  });
+}
 
-const goUp = () => {
+const goDown = () => {
   const first = document.querySelector('.first')
   const second = document.querySelector('.second')
   const third = document.querySelector('.third')
@@ -45,7 +49,7 @@ const goUp = () => {
   }
 }
 
-const goDown = () => {
+const goUp = () => {
   const first = document.querySelector('.first')
   const second = document.querySelector('.second')
   const third = document.querySelector('.third')
@@ -79,14 +83,30 @@ const goDown = () => {
 }
 
 const Images = () => {
+  const [bg, setBg] = useState('')
+  const [element, setElement] = useState('.first');
+
+  useEffect(() => {
+    const selectedElement = document.querySelector(element);
+    if(selectedElement){
+      const showBg = selectedElement.getAttribute('bg');
+      setBg(showBg);
+    }
+  }, [element]);
+
   return (
-    <div className='img-wrap'>
+    <div className='img-wrap' onMouseEnter={gsapObserver}>
       {pictureArr.map((data)=>(
-        <div className={`${data.position} img-box`} key={data.id} order={data.order}>
+        <div className={`${data.position} img-box`} key={data.id} order={data.order} bg={data.bg}>
           <img src={data.src} alt="image" />
           <p className='text'>{data.text}</p>
         </div>
     ))}
+      <div 
+      className='bg'
+      style={{ backgroundColor: bg}}
+      >
+      </div>
     </div>
     
   );
