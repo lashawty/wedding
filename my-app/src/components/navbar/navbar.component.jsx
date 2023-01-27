@@ -1,20 +1,17 @@
 import './navbar.styles.sass';
-import { gsap } from 'gsap'
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Observer } from "gsap/Observer";
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-import { TextPlugin } from "gsap/TextPlugin";
-
-gsap.registerPlugin(ScrollTrigger, Observer, ScrollToPlugin, TextPlugin);
+import Info from '../info/info.component'
+import FormWrap from '../formwrap/formwrap.component'
 
 const Navbar = () => {
   return (
     <nav className='nav'>
+      <Info />
       <div className='title tracking-in-expand-fwd-top'>
         <h2>2023</h2>
         <h1> Sean & Chloe's wedding</h1>
         <h2>OCTOBER 15th</h2>
       </div>
+      <FormWrap />
     </nav>
   );
 };

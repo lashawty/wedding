@@ -1,0 +1,54 @@
+@import '../../mixin.sass'
+
+.form-container
+  padding-top: 105px
+  position: fixed
+  top: 0
+  left: 0
+  width: 100vw
+  height: 100vh
+  color: #fff
+  .title-wrap
+    margin: 0 auto
+    padding: 20px
+    +flexCenter
+    background: #1d1c16
+    border-radius: 60px
+    width: 80vw
+    h3
+      font-size: px(40)
+    p
+      font-size: px(14)
+      margin-left: 50px
+.input-wrap
+  margin: 20px auto 0 auto
+  display: flex
+  flex-wrap: wrap
+  gap: 20px
+  width: 80vw
+.input-box, .input-submit
+  padding: 50px 80px
+  width: calc(50% - 10px)
+  background: #1d1c16
+  border-radius: 60px
+  font-size: px(20)
+  font-weight: 500
+.input-submit
+  +flexCenter
+  cursor: pointer
+  width: 100%
+  .submit-chi
+    margin-left: 50px
+    font-size: px(14)
+.input-box
+  display: flex
+  label
+    display: block
+  input
+    margin-left: 20px
+    display: block
+    border: none
+    background: none
+    outline: none
+    color: #fff
+    font-weight: bold

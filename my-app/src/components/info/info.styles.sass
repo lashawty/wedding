@@ -1,0 +1,31 @@
+@import '../../mixin.sass'
+
+.info-wrap
+  width: 50px
+  height: 20px
+.burger
+  position: relative
+  z-index: 7
+  width: 50px
+  cursor: pointer
+  +rwdmax(767)
+    width: 30px
+  p
+    transition: transform 1s ease-in-out, opacity .4s ease-in-out .8s
+    position: absolute
+    top: 0
+    left: 0
+    font-size: px(20)
+    font-weight: 500
+    +rwdmax(767)
+      font-size: px(12)
+  .close
+    transform: translateX(-300%)
+    opacity: 0
+  &.active
+    .show
+      transform: translateX(-300%)
+      opacity: 0
+    .close
+      transform: translateX(0)
+      opacity: 1
