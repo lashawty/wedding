@@ -1,5 +1,6 @@
 import './form.styles.sass'
 import React, { useState, useEffect } from 'react';
+
 const inputArr = [
   {
     title: 'Name',
