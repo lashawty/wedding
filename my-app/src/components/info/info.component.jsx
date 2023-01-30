@@ -17,6 +17,8 @@ const Info = () => {
 
   useLayoutEffect(() => {
     const imgBoxes = document.querySelectorAll('.img-box')
+    const formButton = document.querySelector('.form-button')
+    gsap.set(formButton, { xPercent: 200 });
     gsap.set(imgBoxes, { opacity: 0 });
     const ctx = gsap.context(() => {
       // add a box and circle animation to our timeline and play on first render
@@ -26,6 +28,10 @@ const Info = () => {
       .to(".list", {
         opacity: 0,
         yPercent: -100,
+        duration: 1.2,
+      })
+      .to(formButton, {
+        xPercent: 0,
         duration: 1.2,
       })
       .to(imgBoxes, {
