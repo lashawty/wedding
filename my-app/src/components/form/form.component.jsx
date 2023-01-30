@@ -23,10 +23,29 @@ const inputArr = [
     type: 'text',
   },
 ]
+
 const Form =()=>{
   const [inputs, setInputs] = useState({})
-  const handleSubmit = async () => {
-    console.log(inputs);
+  const handleSubmit = () => {
+    const formEle = document.querySelector("form");
+    const formDatab = new FormData(formEle);
+    fetch(
+      "https://script.google.com/macros/s/AKfycbyjcCobCnEY4eraM2Fj30_KKsO5YUXYBe9S1E3DiXb9Z8MdpGy_e1Z43EO6uab0tDPk/exec",
+      {
+        method: "POST",
+        body: formDatab
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+      formEle.reset()
+      //設置cookie辨識
   }
   const handleChange = (e, title) => {
     setInputs({...inputs, [title]: e.target.value})
@@ -37,13 +56,14 @@ const Form =()=>{
         <h3>Form</h3>
         <p>表單</p>
       </div>
-      <div className='input-wrap'>
+      <form className='input-wrap'>
         {inputArr.map((data) =>(
           <div className='input-box' key={data.title}>
             <label>{data.title}</label>
             <input
               className='form-input' 
               placeholder={data.placeholder} 
+              name={data.title}
               type={data.type} 
               maxLength="10"
               onChange={(e) => handleChange(e, data.title)}
@@ -57,7 +77,7 @@ const Form =()=>{
           <p className='submit-eng'>Send</p>
           <p className='submit-chi'>送出</p>
         </div>
-      </div>
+      </form>
     </div>
   );
 }
