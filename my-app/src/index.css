@@ -75,7 +75,7 @@ input, textarea {
 
 /* react */
 body {
-  font-family: 'chenyu', 'Cinzel', 'Noto Sans TC', 'chenyu', sans-serif, serif;
+  font-family:'chenyu', 'Cinzel', 'Noto Sans TC', -apple-system, sans-serif, serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
