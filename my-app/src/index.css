@@ -75,7 +75,7 @@ input, textarea {
 
 /* react */
 body {
-  font-family: -apple-system, 'Cinzel', 'Noto Sans TC', sans-serif, serif;
+  font-family: 'chenyu', 'Cinzel', 'Noto Sans TC', 'chenyu', sans-serif, serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -85,3 +85,7 @@ code {
     monospace;
 }
 
+@font-face {
+  font-family: 'chenyu';
+  src: url('./chenyu.ttf') format('truetype');
+}
