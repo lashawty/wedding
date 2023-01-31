@@ -59,12 +59,12 @@ const List = ({ children }) => {
 
     //
     if (activeKey === key) {
-      gsap.to(otherLi, { opacity: 1, delay: .5, xPercent: 0 });
+      gsap.to(otherLi, { opacity: 1, delay: .5, xPercent: 0, });
       gsap.to(currentLi, { opacity: 1, y: 0, xPercent:0});
       gsap.to(currentContent, {opacity:0, y: 20})
       setActiveKey(null);
     } else {
-      gsap.to(otherLi, { opacity: 0, xPercent: 120 });
+      gsap.to(otherLi, { opacity: 0, xPercent: 120});
       gsap.to(currentLi, { opacity: 1, y: (getDistanceY * -1), delay: .5, xPercent: 0},);
       gsap.to(currentContent, {y: 0,delay: 1, opacity: 1})
       setActiveKey(key);

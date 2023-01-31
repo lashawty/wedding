@@ -53,7 +53,12 @@ const FormWrap =()=>{
 
   return (
     <div ref={app} >
-      <p className='form-button' onClick={handleList}>Form</p>
+      <div
+      className={isActive ? "form-button" : "form-button active"}
+      onClick={handleList}>
+        <p className='show'>Form</p>
+        <p className='close'>Close</p>
+      </div>
       <Form />
     </div>
   );
