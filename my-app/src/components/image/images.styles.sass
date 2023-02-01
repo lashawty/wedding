@@ -41,53 +41,56 @@
   +img($p: 56.25%)
   border-radius: 30px
   position: absolute
-  top: 105px
+  top: 125px
   left: 50%
-  transform: translate(-50%, 0)
-  transition: transform 1s ease-in-out, width 1s ease-in-out
+  // transform: translate(-50%, 0)
+  // transition: transform 1s ease-in-out, width 1s ease-in-out
   overflow: hidden
   z-index: 1
   &.first
-    transform: translate(-50%, 200px)
+    transform: translate(-50%, 120px)
     z-index: 5
-    transition: transform 1s ease-in-out, width 1s ease-in-out
     .text
       opacity: 1
       transform: translate(-50%, -50%)
   &.second
     max-width: 95%
-    transform: translate(-50%, 150px)
+    transform: translate(-50%, 90px)
     z-index: 4
+    opacity: .8
   &.third
     max-width: 90%
-    transform: translate(-50%, 100px)
+    transform: translate(-50%, 60px)
     z-index: 3
+    opacity: .6
   &.fourth
     max-width: 85%
-    transform: translate(-50%, 50px)
+    transform: translate(-50%, 30px)
     z-index: 2
+    opacity: .4
   &.fifth
     max-width: 80%
     transform: translate(-50%, 0)
     z-index: 1
+    opacity: .2
   +rwdmax(767)
     &::before
       padding-bottom: 177.78%
     &.first
       max-width: 95%
-      transform: translate(-50%, 120px)
+      // transform: translate(-50%, 120px)
     &.second
       max-width: 85%
-      transform: translate(-50%, 90px)
+      // transform: translate(-50%, 90px)
     &.third
       max-width: 75%
-      transform: translate(-50%, 60px)
+      // transform: translate(-50%, 60px)
     &.fourth
       max-width: 65%
-      transform: translate(-50%, 30px)
+      // transform: translate(-50%, 30px)
     &.fifth
       max-width: 55%
-      transform: translate(-50%, 0)
+      // transform: translate(-50%, 0)
 .text
   +posCenter
   color: #fff
