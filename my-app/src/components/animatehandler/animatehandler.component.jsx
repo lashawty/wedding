@@ -9,7 +9,7 @@ const AnimateHandler = () => {
     <div className="animate-handler">
         <Navbar />
         <Images />
-        {/* <LogoWrap /> */}
+        <LogoWrap />
     </div>
     )
 }

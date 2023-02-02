@@ -1,3 +1,4 @@
+@import '../../mixin.sass'
 @keyframes back
   to
     transform: none
@@ -30,26 +31,30 @@
   left: 0
   width: 100vw
   height: 100vh
-  background: #fff
-  animation: dnone .6s 3s forwards
-svg
-  width: 50vw
-  position: absolute
-  left: 50%
-  top: 50%
-  transform: translate(-50%, -50%)
-  animation: slide-out-blurred-top .6s cubic-bezier(0.755, 0.050, 0.855, 0.060) 2s both
-.l, .a, .s, .h, .w, .t, .y, .border
-  animation: back 1.6s both ease-in
+  background: #ada193
+  // animation: dnone 5s forwards
+// svg
+//   width: 50vw
+//   position: absolute
+//   left: 50%
+//   top: 50%
+//   transform: translate(-50%, -50%)
+//   animation: slide-out-blurred-top .6s cubic-bezier(0.755, 0.050, 0.855, 0.060) 2s both
+// .l, .a, .s, .h, .w, .t, .y, .border
+//   animation: back 1.6s both ease-in
 
-.l, .h
-  transform: translateX(1000px)
-.a, .w
-  transform: translateY(1000px)
-.s, .t
-  transform: translateX(-1000px)
-.h, .y
-  transform: translateY(-1000px)
-.border
-  opacity: 0
-
+// .l, .h
+//   transform: translateX(1000px)
+// .a, .w
+//   transform: translateY(1000px)
+// .s, .t
+//   transform: translateX(-1000px)
+// .h, .y
+//   transform: translateY(-1000px)
+// .border
+//   opacity: 0
+.lottie
+  width: 100vw
+  +posCenter
+.dnone
+  display: none

@@ -5,9 +5,9 @@ import gsap from "gsap";
 import {Observer} from "gsap/Observer";
 gsap.registerPlugin(Observer);
 
-const FormWrap =()=>{
+const FormWrap = ({ handleClick }) =>{
   // const [reversed, setReversed] = useState(false);
-  const [isActive, setActive] = useState("false");
+  // const [isActive, setActive] = useState("false");
   // const app = useRef();
   // // store the timeline in a ref.
   // const tl = useRef();
@@ -46,10 +46,10 @@ const FormWrap =()=>{
   //   tl.current.reversed(reversed);
   // }, [reversed]);
 
-  const handleList = () => {
-    setActive(!isActive);
-    // setReversed(!reversed)
-  }
+  // const handleList = () => {
+  //   setActive(!isActive);
+  //   // setReversed(!reversed)
+  // }
 
   return (
     <div
@@ -57,10 +57,11 @@ const FormWrap =()=>{
       // ref={app} 
       >
       <div
-      className={isActive ? "form-button" : "form-button active"}
-      onClick={handleList}>
-        <p className='show'>Form</p>
-        <p className='close'>Close</p>
+      // className={isActive ? "form-button" : "form-button active"}
+      className='form-button'
+      onClick={handleClick}>
+        <p className='show form-show'>Form</p>
+        <p className='close form-close'>Close</p>
       </div>
       <Form />
     </div>
