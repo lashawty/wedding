@@ -7,7 +7,10 @@ import FormWrap from '../formwrap/formwrap.component'
 const Navbar = () => {
  
   const [buttonHeight, setButtonHeight] = useState(0);
+  const [isInfoClicked, setIsInfoClicked] = useState(false);
+  const [isFormClicked, setIsFormClicked] = useState(false);
 
+  //取得按鈕高度
   useEffect(() => {
     const el = document.querySelector(".info-wrap");
     if (el) {
@@ -15,88 +18,89 @@ const Navbar = () => {
     }
   }, []);
 
-  const [isInfoClicked, setIsInfoClicked] = useState(false);
-   useEffect(() => {
+  useEffect(() => {
 
-    const tl = gsap.timeline();
+  const tl = gsap.timeline();
 
-    if (isInfoClicked) {
-      gsap.to('.form-wrap', {duration: 1, x: 200});
-      gsap.to('.info-show', {duration: 1, y: -1 * buttonHeight})
-      gsap.to('.info-close', {duration: 1, y: -1 * buttonHeight})
-      tl.to('.first', {duration: 1, y: 1000})
-      .to('.second', {duration: 1, y: 1000}, '-=0.5')
-      .to('.third', {duration: 1, y: 1000}, '-=0.5')
-      .to('.fourth', {duration: 1, y: 1000}, '-=0.5')
-      .to('.fifth', {duration: 1, y: 1000}, '-=0.5')
-      .to('.list', {
-        duration: 2, 
-        yPercent: 0,  
-        ease: "power4"
-      });
-    } else {
-      gsap.to('.form-wrap', {duration: 1, x: 0});
-      gsap.to('.info-show', {duration: 1, y: 0})
-      gsap.to('.info-close', {duration: 1, y: 0})
-      tl.to('.list', {
-        duration: 1, 
-        yPercent: -200,
-        ease: "power4"
-      })
-      .to('.fifth', {duration: 1, y: 0}, '-=0.5')
-      .to('.fourth', {duration: 1, y: 30}, '-=0.5')
-      .to('.third', {duration: 1, y: 60}, '-=0.5')
-      .to('.second', {duration: 1, y: 90 }, '-=0.5')
-      .to('.first', {duration: 1, y: 120}, '-=0.5')
-      
-    }
-  }, [isInfoClicked, gsap.getProperty('.form-wrap', 'x')]);
+  if (isInfoClicked) {
+    gsap.to('.form-wrap', {duration: 1, x: 200});
+    gsap.to('.info-show', {duration: 1, y: -1 * buttonHeight})
+    gsap.to('.info-close', {duration: 1, y: -1 * buttonHeight})
+    tl.to('.first', {duration: 1, y: 1000})
+    .to('.second', {duration: 1, y: 1000}, '-=0.5')
+    .to('.third', {duration: 1, y: 1000}, '-=0.5')
+    .to('.fourth', {duration: 1, y: 1000}, '-=0.5')
+    .to('.fifth', {duration: 1, y: 1000}, '-=0.5')
+    .to('.list', {
+      duration: 2, 
+      yPercent: 0,  
+      ease: "power4"
+    });
+    console.log('info-leave');
+  } else {
+    gsap.to('.form-wrap', {duration: 1, x: 0});
+    gsap.to('.info-show', {duration: 1, y: 0})
+    gsap.to('.info-close', {duration: 1, y: 0})
+    tl.to('.list', {
+      duration: 1, 
+      yPercent: -200,
+      ease: "power4"
+    })
+    .to('.fifth', {duration: 1, y: 0}, '-=0.5')
+    .to('.fourth', {duration: 1, y: 30}, '-=0.5')
+    .to('.third', {duration: 1, y: 60}, '-=0.5')
+    .to('.second', {duration: 1, y: 90 }, '-=0.5')
+    .to('.first', {duration: 1, y: 120}, '-=0.5')
+    console.log('info-back');
+  }
+}, [isInfoClicked, gsap.getProperty('.form-wrap', 'x')]);
 
-  const [isFormClicked, setIsFormClicked] = useState(false);
-   useEffect(() => {
+  
+  useEffect(() => {
 
-    const tl = gsap.timeline();
+  const tl = gsap.timeline();
 
-    if (isFormClicked) {
-      gsap.to('.info-wrap', {duration: 1, x: -200});
-      gsap.to('.form-show', {duration: 1, y: -1 * buttonHeight})
-      gsap.to('.form-close', {duration: 1, y: -1 * buttonHeight})
-      tl.to('.first', {duration: 1, y: 1000})
-      .to('.second', {duration: 1, y: 1000}, '-=0.5')
-      .to('.third', {duration: 1, y: 1000}, '-=0.5')
-      .to('.fourth', {duration: 1, y: 1000}, '-=0.5')
-      .to('.fifth', {duration: 1, y: 1000}, '-=0.5')
-      .to('.form-container', {
-        duration: 2,
-        x: 0,
-        yPercent: 0,  
-        ease: "power4"
-      });
-    } else {
-      gsap.to('.info-wrap', {duration: 1, x: 0});
-      gsap.to('.form-show', {duration: 1, y: 0})
-      gsap.to('.form-close', {duration: 1, y: 0})
-      tl.to('.form-container', {
-        duration: 1,
-        x: 0,
-        yPercent: -200,
-        ease: "power4"
-      })
-      .to('.fifth', {duration: 1, y: 0}, '-=0.5')
-      .to('.fourth', {duration: 1, y: 30}, '-=0.5')
-      .to('.third', {duration: 1, y: 60}, '-=0.5')
-      .to('.second', {duration: 1, y: 90 }, '-=0.5')
-      .to('.first', {duration: 1, y: 120}, '-=0.5')
-      
-    }
-  }, [isFormClicked, gsap.getProperty('.form-wrap', 'x')]);
+  if (isFormClicked) {
+    gsap.to('.info-wrap', {duration: 1, x: -200});
+    gsap.to('.form-show', {duration: 1, y: -1 * buttonHeight})
+    gsap.to('.form-close', {duration: 1, y: -1 * buttonHeight})
+    tl.to('.first', {duration: 1, y: 1000})
+    .to('.second', {duration: 1, y: 1000}, '-=0.5')
+    .to('.third', {duration: 1, y: 1000}, '-=0.5')
+    .to('.fourth', {duration: 1, y: 1000}, '-=0.5')
+    .to('.fifth', {duration: 1, y: 1000}, '-=0.5')
+    .to('.form-container', {
+      duration: 2,
+      x: 0,
+      yPercent: 0,  
+      ease: "power4"
+    });
+    console.log('form-leave');
+  } else {
+    gsap.to('.info-wrap', {duration: 1, x: 0});
+    gsap.to('.form-show', {duration: 1, y: 0})
+    gsap.to('.form-close', {duration: 1, y: 0})
+    tl.to('.form-container', {
+      duration: 1,
+      x: 0,
+      yPercent: -200,
+      ease: "power4"
+    })
+    .to('.fifth', {duration: 1, y: 0}, '-=0.5')
+    .to('.fourth', {duration: 1, y: 30}, '-=0.5')
+    .to('.third', {duration: 1, y: 60}, '-=0.5')
+    .to('.second', {duration: 1, y: 90 }, '-=0.5')
+    .to('.first', {duration: 1, y: 120}, '-=0.5')
+    console.log('form-back');
+  }
+}, [isFormClicked, gsap.getProperty('.info-wrap', 'x')]);
 
-  const handleInfoClick = () => {
-    setIsInfoClicked(!isInfoClicked);
-  };
-  const handleFormClick = () => {
-    setIsFormClicked(!isFormClicked);
-  };
+const handleInfoClick = () => {
+  setIsInfoClicked(!isInfoClicked);
+};
+const handleFormClick = () => {
+  setIsFormClicked(!isFormClicked);
+};
 
   return (
     <nav className='nav'>

@@ -53,8 +53,9 @@ const List = ({ children }) => {
     const otherLi = list.querySelectorAll('li')
     const currentContent = event.currentTarget.querySelector('.list-content')
     // 抓距離上方的距離 list的padding top
-    let getListPaddingString = window.getComputedStyle(list).getPropertyValue('padding-top')
+    let getListPaddingString = window.getComputedStyle(list).getPropertyValue('top')
     let paddingTopNumber = parseInt(getListPaddingString);
+    
     let getDistanceY = currentLi.getBoundingClientRect().y - paddingTopNumber 
 
     //
