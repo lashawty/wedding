@@ -10,8 +10,13 @@ const Images = ({getColor}) => {
   const [color, setColor] = useState("")
   const [element, setElement] = useState(".first");
   const [mounted, setMounted] = useState(false);
-  let delta = 30
+  let delta
   let win = document.body.clientWidth
+  if (win > 767) {
+    delta = 30
+  } else {
+    delta = 15
+  }
   const goDown = () => {
     console.log('render');
     const first = document.querySelector(".first");
