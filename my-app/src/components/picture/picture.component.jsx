@@ -12,6 +12,7 @@ export default [
     position: 'first',
     order: "1",
     bg: '#ada193',
+    color: '#fff',
   },
   {
     id: 'pic2',
@@ -20,6 +21,7 @@ export default [
     position: 'second',
     order: "2",
     bg: '#7f7263',
+    color: '#fff',
   },
   {
     id: 'pic3',
@@ -27,7 +29,8 @@ export default [
     text: 'pic3',
     position: 'third',
     order: "3",
-    bg: '#c4957a'
+    bg: '#c4957a',
+    color: '#000',
   },
   {
     id: 'pic4',
@@ -36,6 +39,7 @@ export default [
     position: 'fourth',
     order: "4",
     bg: '#a76251',
+    color: '#000',
   },
   {
     id: 'pic5',
@@ -44,5 +48,6 @@ export default [
     position: 'fifth',
     order: "5",
     bg: '#aca17d',
+    color: '#fff',
   },
 ]

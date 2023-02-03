@@ -1,15 +1,13 @@
 @import '../../mixin.sass'
 
 .form-container
-  // padding-top: 105px
   position: absolute
   top: 105px
-  // left: 0
   right: -30px
   width: 100vw
   height: 100vh
-  color: #fff
-  // transform: translateY(-100%)
+  +rwdmax(767)
+    right: -20px
   .title-wrap
     margin: 0 auto
     padding: 20px

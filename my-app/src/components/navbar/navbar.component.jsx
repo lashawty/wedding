@@ -53,7 +53,7 @@ const Navbar = () => {
     .to('.first', {duration: 1, y: 120}, '-=0.5')
     console.log('info-back');
   }
-}, [isInfoClicked, gsap.getProperty('.form-wrap', 'x')]);
+}, [isInfoClicked]);
 
   
   useEffect(() => {
@@ -93,7 +93,7 @@ const Navbar = () => {
     .to('.first', {duration: 1, y: 120}, '-=0.5')
     console.log('form-back');
   }
-}, [isFormClicked, gsap.getProperty('.info-wrap', 'x')]);
+}, [isFormClicked]);
 
 const handleInfoClick = () => {
   setIsInfoClicked(!isInfoClicked);

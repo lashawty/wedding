@@ -4,10 +4,12 @@ import pictureArr from "../picture/picture.component";
 import gsap from "gsap";
 import {Observer} from "gsap/Observer";
 gsap.registerPlugin(Observer);
-const Images = () => {
+const Images = ({getColor}) => {
   const containerRef = useRef(null);
   const [bg, setBg] = useState("");
+  const [color, setColor] = useState("")
   const [element, setElement] = useState(".first");
+  const [mounted, setMounted] = useState(false);
   let delta = 30
   let win = document.body.clientWidth
   const goDown = () => {
@@ -18,11 +20,11 @@ const Images = () => {
     const fourth = document.querySelector(".fourth");
     const fifth = document.querySelector(".fifth");
 
-    gsap.to('.first', {duration:1, y: 0, zIndex: 1, opacity: .2,}, )
-    gsap.to('.second', {duration:1, y: delta * 4, zIndex: 5, opacity: 1})
-    gsap.to('.third', {duration:1, y: delta * 3, zIndex: 4, opacity: .8},)
-    gsap.to('.fourth', {duration:1, y: delta * 2, zIndex: 3, opacity: .6},)
-    gsap.to('.fifth', {duration:1, y: delta , zIndex: 2, opacity: .4},)
+    gsap.to('.first', {duration:1, y: 0, xPercent: -50, zIndex: 1, opacity: .2,}, )
+    gsap.to('.second', {duration:1, y: delta * 4, xPercent: -50, zIndex: 5, opacity: 1})
+    gsap.to('.third', {duration:1, y: delta * 3, xPercent: -50, zIndex: 4, opacity: .8},)
+    gsap.to('.fourth', {duration:1, y: delta * 2, xPercent: -50, zIndex: 3, opacity: .6},)
+    gsap.to('.fifth', {duration:1, y: delta , xPercent: -50, zIndex: 2, opacity: .4},)
     
     
     
@@ -54,54 +56,17 @@ const Images = () => {
     const currentFirst = document.querySelector(".first");
     const showBg = currentFirst.getAttribute("bg");
     setBg(showBg);
-
+    const showColor = currentFirst.getAttribute("color");
+    setColor(showColor);
   };
 
-  // const goUp = () => {
-  //   const first = document.querySelector(".first");
-  //   const second = document.querySelector(".second");
-  //   const third = document.querySelector(".third");
-  //   const fourth = document.querySelector(".fourth");
-  //   const fifth = document.querySelector(".fifth");
-
-  //   if (first) {
-  //     first.classList.remove("first");
-  //     first.classList.add("second");
-  //   }
-
-  //   if (second) {
-  //     second.classList.remove("second");
-  //     second.classList.add("third");
-  //   }
-
-  //   if (third) {
-  //     third.classList.remove("third");
-  //     third.classList.add("fourth");
-  //   }
-
-  //   if (fourth) {
-  //     fourth.classList.remove("fourth");
-  //     fourth.classList.add("fifth");
-  //   }
-
-  //   if (fifth) {
-  //     fifth.classList.remove("fifth");
-  //     fifth.classList.add("first");
-  //   }
-
-  //   const currentFirst = document.querySelector(".first");
-  //   const showBg = currentFirst.getAttribute("bg");
-  //   setBg(showBg);
-  // };
-
-  const [mounted, setMounted] = useState(false);
+  
   useEffect(() => {
     if (mounted && containerRef.current) {
       let fired = false;
       Observer.create({
         target: containerRef.current,
         type: "wheel,touch",
-        // onUp: goUp,
         scrollSpeed: -1,
         onDown: () => {
           if (!fired) {
@@ -125,8 +90,18 @@ const Images = () => {
     }
   }, [element]);
 
+  useEffect(() => {
+    const selectedElement = document.querySelector(element);
+    if (selectedElement) {
+      const showColor = selectedElement.getAttribute("color");
+      setColor(showColor);
+      if (getColor) {
+        getColor(showColor);
+      }
+    }
+  }, [element]);
 
-  return (
+   return (
     <div className="img-container">
       <div className="img-wrap" ref={containerRef}>
         {pictureArr.map((data) => (
@@ -135,6 +110,7 @@ const Images = () => {
             key={data.id}
             order={data.order}
             bg={data.bg}
+            color={data.color}
           >
             <img src={data.src} alt="image" />
             <p className="text">{data.text}</p>
