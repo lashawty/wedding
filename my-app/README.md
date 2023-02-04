@@ -68,3 +68,23 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+### GSAP
+
+It's definitely not ideal to try to troubleshoot via a Github link like that - you'll have a much better chance of getting a solid answer here if you provide a CodePen or CodeSandbox or Stackblitz. Here's a React starter template that you can fork.
+
+One thing I noticed was that it looks like you're not doing proper cleanup which is pretty important in React. React 18 actually double-invokes useEffect()/useLayoutEffect() which means you might inadvertently be creating duplicate/competing animations/observers. I'd definitely recommend reading this article:
+
+[GSAP React Doc](https://greensock.com/react)
+
+gsap.context() is your new best friend in React because it makes cleanup so simple (plus the scoped selectors can be super convenient).
+
+useLayoutEffect(() => {
+  let ctx = gsap.context(() => {
+    // put all your GSAP-related code here
+  });
+  
+  return () => ctx.revert(); // <-- cleanup!
+}, []);
+I'd recommend wrapping your stuff properly in a gsap.context() and do proper cleanup, and then if you're still having trouble, post a Stackblitz that clearly shows the issue and we'd be happy to take a peek.
