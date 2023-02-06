@@ -26,19 +26,24 @@ const Navbar = () => {
     gsap.to('.form-wrap', {duration: 1, x: 200});
     gsap.to('.info-show', {duration: 1, y: -1 * buttonHeight})
     gsap.to('.info-close', {duration: 1, y: -1 * buttonHeight})
-    tl.to('.first', {duration: 1, y: 1000, xPercent: -50})
-    .to('.second', {duration: 1, y: 1000, xPercent: -50}, '-=0.5')
-    .to('.third', {duration: 1, y: 1000, xPercent: -50}, '-=0.5')
-    .to('.fourth', {duration: 1, y: 1000, xPercent: -50}, '-=0.5')
-    .to('.fifth', {duration: 1, y: 1000, xPercent: -50}, '-=0.5')
+    tl.to(".img-box", {
+      duration: 1, 
+      xPercent: 100, 
+      stagger: {
+        amount: .3,
+        from: "edges",
+      },
+      ease: "back.in"
+    })
     .to('.list', {
-      duration: 2, 
+      duration: 1, 
       yPercent: 0,  
-      ease: "power4"
+      ease: "power4",
+      delay: 1,
     });
     console.log('info-leave');
   } else {
-    gsap.to('.form-wrap', {duration: 1, x: 0});
+    gsap.to('.form-wrap', {duration: 1, x: 0})
     gsap.to('.info-show', {duration: 1, y: 0})
     gsap.to('.info-close', {duration: 1, y: 0})
     tl.to('.list', {
@@ -46,11 +51,15 @@ const Navbar = () => {
       yPercent: -200,
       ease: "power4"
     })
-    .to('.fifth', {duration: 1, y: 0, xPercent: -50}, '-=0.5')
-    .to('.fourth', {duration: 1, y: delta, xPercent: -50}, '-=0.5')
-    .to('.third', {duration: 1, y: delta * 2, xPercent: -50}, '-=0.5')
-    .to('.second', {duration: 1, y: delta * 3, xPercent: -50}, '-=0.5')
-    .to('.first', {duration: 1, y: delta * 4, xPercent: -50}, '-=0.5')
+    .to(".img-box", {
+      duration: 1, 
+      xPercent: -50, 
+      stagger: {
+        amount: .3,
+        from: "edges",
+      },
+      ease: "back.out"
+    })
     console.log('info-back');
   }
 }, [isInfoClicked]);
@@ -64,11 +73,15 @@ const Navbar = () => {
     gsap.to('.info-wrap', {duration: 1, x: -200});
     gsap.to('.form-show', {duration: 1, y: -1 * buttonHeight})
     gsap.to('.form-close', {duration: 1, y: -1 * buttonHeight})
-    tl.to('.first', {duration: 1, y: 1000, xPercent: -50})
-    .to('.second', {duration: 1, y: 1000, xPercent: -50}, '-=0.5')
-    .to('.third', {duration: 1, y: 1000, xPercent: -50}, '-=0.5')
-    .to('.fourth', {duration: 1, y: 1000, xPercent: -50}, '-=0.5')
-    .to('.fifth', {duration: 1, y: 1000, xPercent: -50}, '-=0.5')
+    tl.to(".img-box", {
+      duration: 1, 
+      xPercent: -200, 
+      stagger: {
+        amount: .3,
+        from: "edges",
+      },
+      ease: "back.in"
+    })
     .to('.form-container', {
       duration: 2,
       x: 0,
@@ -86,11 +99,15 @@ const Navbar = () => {
       yPercent: -200,
       ease: "power4"
     })
-    .to('.fifth', {duration: 1, xPercent: -50, y: 1, }, '-=0.5')
-    .to('.fourth', {duration: 1, y: delta, xPercent: -50}, '-=0.5')
-    .to('.third', {duration: 1, y: delta * 2, xPercent: -50}, '-=0.5')
-    .to('.second', {duration: 1, y: delta * 3, xPercent: -50}, '-=0.5')
-    .to('.first', {duration: 1, y: delta * 4, xPercent: -50}, '-=0.5')
+    .to(".img-box", {
+      duration: 1, 
+      xPercent: -50, 
+      stagger: {
+        amount: .3,
+        from: "edges",
+      },
+      ease: "back.out"
+    })
     console.log('form-back');
   }
 }, [isFormClicked]);
