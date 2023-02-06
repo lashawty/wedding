@@ -9,11 +9,12 @@ const Images = ({getColor}) => {
   const [bg, setBg] = useState("");
   const [color, setColor] = useState("")
   const [element, setElement] = useState(".first");
-  const [mounted, setMounted] = useState(false);
+  const [reversed, setReversed] = useState(false);
   let isChangeClass = false
   let deltaY, deltaX
-  deltaY = 30
+  deltaY = 30 //
   deltaX = .8
+
   const changeClass = () => {
     if(!isChangeClass) return
     const first = document.querySelector(".first");
@@ -49,7 +50,7 @@ const Images = ({getColor}) => {
     isChangeClass = false
     console.log('change class')
   }
-  
+
   useLayoutEffect(() => {
     const goDown = () => {
       console.log('render');
@@ -92,27 +93,6 @@ const Images = ({getColor}) => {
     return () => ctx.revert(); // <-- cleanup!
   }, []);
 
-  // useEffect(() => {
-  //   if (mounted && containerRef.current) {
-  //     let fired = false;
-  //     Observer.create({
-  //       target: containerRef.current,
-  //       type: "wheel,touch",
-  //       scrollSpeed: -1,
-  //       onDown: () => {
-  //         if (!fired) {
-  //           goDown();
-  //           fired = true;
-  //         }
-  //       },
-  //       onStop: () => {
-  //         fired = false
-  //       }
-  //     });
-  //   }
-  //   setMounted(true)
-  // }, [containerRef.current, mounted]);
-
   useEffect(() => {
     const selectedElement = document.querySelector(element);
     if (selectedElement) {
@@ -133,7 +113,7 @@ const Images = ({getColor}) => {
   }, [element]);
 
    return (
-    <div className="img-container">
+    <div className="img-container" >
       <div className="img-wrap" ref={containerRef}>
         {pictureArr.map((data) => (
           <div
@@ -145,6 +125,7 @@ const Images = ({getColor}) => {
           >
             <img src={data.src} alt="image" />
             <p className="text">{data.text}</p>
+            <p className="text-content">{data.content}</p>
           </div>
         ))}
         <div className="bg" style={{backgroundColor: bg}}></div>
