@@ -9,13 +9,7 @@ const Navbar = () => {
   const [buttonHeight, setButtonHeight] = useState(0);
   const [isInfoClicked, setIsInfoClicked] = useState(false);
   const [isFormClicked, setIsFormClicked] = useState(false);
-  let delta
-  let win = document.body.clientWidth
-  if (win > 767) {
-    delta = 30
-  } else {
-    delta = 15
-  }
+  let delta = 30
   //取得按鈕高度
   useEffect(() => {
     const el = document.querySelector(".info-wrap");

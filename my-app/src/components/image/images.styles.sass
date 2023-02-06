@@ -23,7 +23,7 @@
   overflow: hidden
   z-index: 1
   +rwdmax(767)
-    top: 135px
+    top: 30px
   &.first
     transform: translate(-50%, 120px)
     z-index: 5
@@ -31,43 +31,24 @@
       opacity: 1
       transform: translate(-50%, -50%)
   &.second
-    max-width: 95%
-    transform: translate(-50%, 90px)
+    transform: translate(-50%, 90px) scale(.95)
     z-index: 4
     opacity: .8
   &.third
-    max-width: 90%
-    transform: translate(-50%, 60px)
+    transform: translate(-50%, 60px) scale(.9)
     z-index: 3
     opacity: .6
   &.fourth
-    max-width: 85%
-    transform: translate(-50%, 30px)
+    transform: translate(-50%, 30px) scale(.85)
     z-index: 2
     opacity: .4
   &.fifth
-    max-width: 80%
-    transform: translate(-50%, 0)
+    transform: translate(-50%, 0) scale(.8)
     z-index: 1
     opacity: .2
   +rwdmax(767)
     &::before
       padding-bottom: 177.78%
-    &.first
-      max-width: 100%
-      transform: translate(-50%, 75px)
-    &.second
-      max-width: 90%
-      transform: translate(-50%, 60px)
-    &.third
-      max-width: 80%
-      transform: translate(-50%, 45px)
-    &.fourth
-      max-width: 70%
-      transform: translate(-50%, 30px)
-    &.fifth
-      max-width: 60%
-      transform: translate(-50%, 15px)
 .text
   +posCenter
   color: #fff
