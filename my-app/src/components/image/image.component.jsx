@@ -122,6 +122,7 @@ const Images = ({getColor}) => {
             order={data.order}
             bg={data.bg}
             color={data.color}
+            
           >
             <img src={data.src} alt="image" />
             <p className="text">{data.text}</p>
