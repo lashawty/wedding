@@ -10,13 +10,11 @@ const Images = ({getColor}) => {
   const [color, setColor] = useState("")
   const [element, setElement] = useState(".first");
   const [reversed, setReversed] = useState(false);
-  let isChangeClass = false
   let deltaY, deltaX
   deltaY = 30 //
   deltaX = .8
 
   const changeClass = () => {
-    if(!isChangeClass) return
     const first = document.querySelector(".first");
     const second = document.querySelector(".second");
     const third = document.querySelector(".third");
@@ -47,14 +45,12 @@ const Images = ({getColor}) => {
       fifth.classList.remove("fifth");
       fifth.classList.add("fourth");
     }
-    isChangeClass = false
     console.log('change class')
   }
 
   useLayoutEffect(() => {
     const goDown = () => {
       console.log('render');
-      isChangeClass = true
       const arr = ['.first','.fifth','.fourth','.third','.second']
       for (let i = 0; i < arr.length; i++) {
         gsap.to(arr[i], {
@@ -122,7 +118,6 @@ const Images = ({getColor}) => {
             order={data.order}
             bg={data.bg}
             color={data.color}
-            
           >
             <img src={data.src} alt="image" />
             <p className="text">{data.text}</p>

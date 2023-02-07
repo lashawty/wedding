@@ -1,5 +1,5 @@
 import "./animatehandler.styles.sass";
-import { useState} from "react";
+import { useState, useRef} from "react";
 import { gsap } from "gsap";
 import Navbar from "../navbar/navbar.component";
 import Images from '../image/image.component';
@@ -9,6 +9,7 @@ const AnimateHandler = () => {
     const getColor = (color) => {
         setColor(color)
       }
+
     const changeColor = () => {
         console.log({color});
     }
