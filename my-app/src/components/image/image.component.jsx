@@ -3,18 +3,38 @@ import React, {useEffect, useState, useRef, useLayoutEffect} from "react";
 import pictureArr from "../picture/picture.component";
 import gsap from "gsap";
 import {Observer} from "gsap/Observer";
-gsap.registerPlugin(Observer);
+import {TextPlugin} from "gsap/TextPlugin";
+gsap.registerPlugin(Observer, TextPlugin);
 const Images = ({getColor}) => {
-  const containerRef = useRef(null);
-  const [bg, setBg] = useState("");
+  const containerRef = useRef(null)
+  const [bg, setBg] = useState("")
   const [color, setColor] = useState("")
-  const [element, setElement] = useState(".first");
-  const [reversed, setReversed] = useState(false);
-  let deltaY, deltaX
-  deltaY = 30 //
+  const [element, setElement] = useState(".first")
+  const [reversed, setReversed] = useState(false)
+  let deltaY, deltaX, isChangeClass
+  deltaY = 30
   deltaX = .8
-
+  isChangeClass = false
+  const onClick = ({ currentTarget }) => {
+    if(isChangeClass) return
+    let showedText, orderAttrString, orderNumber
+    const first = currentTarget.querySelector('.first')
+    orderAttrString = first.getAttribute('order')
+    orderNumber = Number(orderAttrString) - 1
+    showedText = pictureArr[orderNumber].content
+    const img = first.querySelector('img')
+    const textContent = first.querySelector('.text-content')
+    const tl = gsap.timeline();
+    tl.to(first, {rotateY: 180, background: '#fff'})
+    .to(img, {opacity: 0})
+    .to(textContent, {
+      opacity: 1,
+      text: showedText
+    })
+  };
+  
   const changeClass = () => {
+    if(!isChangeClass) return
     const first = document.querySelector(".first");
     const second = document.querySelector(".second");
     const third = document.querySelector(".third");
@@ -51,6 +71,10 @@ const Images = ({getColor}) => {
   useLayoutEffect(() => {
     const goDown = () => {
       console.log('render');
+      isChangeClass = true
+      gsap.to('.first', {rotateY: 0, background: ''})
+      gsap.to('.first img',{opacity: 1})
+      gsap.to('.first .text-content', {opacity: 0})
       const arr = ['.first','.fifth','.fourth','.third','.second']
       for (let i = 0; i < arr.length; i++) {
         gsap.to(arr[i], {
@@ -75,6 +99,7 @@ const Images = ({getColor}) => {
       scrollSpeed: -1,
       onDown: () => {
         if (!fired) {
+          isChangeClass = true
           goDown();
           fired = true;
         }
@@ -82,6 +107,7 @@ const Images = ({getColor}) => {
       onStop: () => {
         fired = false
         changeClass()
+        isChangeClass = false
       },
     });
     });
@@ -110,7 +136,7 @@ const Images = ({getColor}) => {
 
    return (
     <div className="img-container" >
-      <div className="img-wrap" ref={containerRef}>
+      <div className="img-wrap" ref={containerRef} onClick={onClick}>
         {pictureArr.map((data) => (
           <div
             className={`${data.position} img-box`}
@@ -121,7 +147,7 @@ const Images = ({getColor}) => {
           >
             <img src={data.src} alt="image" />
             <p className="text">{data.text}</p>
-            <p className="text-content">{data.content}</p>
+            <p className="text-content"></p>
           </div>
         ))}
         <div className="bg" style={{backgroundColor: bg}}></div>
