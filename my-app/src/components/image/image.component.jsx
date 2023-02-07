@@ -25,8 +25,8 @@ const Images = ({getColor}) => {
     const img = first.querySelector('img')
     const textContent = first.querySelector('.text-content')
     const tl = gsap.timeline();
-    tl.to(first, {rotateY: 180, background: '#fff'})
-    .to(img, {opacity: 0})
+    tl.to(first, {rotateY: 180, backgroundColor: '#fff',})
+    .to(img, {opacity: 0},">")
     .to(textContent, {
       opacity: 1,
       text: showedText
