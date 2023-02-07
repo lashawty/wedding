@@ -33,6 +33,9 @@ const Navbar = () => {
       },
       ease: "back.in"
     })
+    .to(".img-wrap", {
+      pointerEvents: "none"
+    })
     .to('.list', {
       duration: 1, 
       yPercent: 0,  
@@ -48,6 +51,9 @@ const Navbar = () => {
       duration: 1, 
       yPercent: -200,
       ease: "power4"
+    })
+    .to(".img-wrap", {
+      pointerEvents: "auto"
     })
     .to(".img-box", {
       duration: 1, 
@@ -80,6 +86,9 @@ const Navbar = () => {
       },
       ease: "back.in"
     })
+    .to(".img-wrap", {
+      pointerEvents: "none"
+    })
     .to('.form-container', {
       duration: 2,
       x: 0,
@@ -96,6 +105,9 @@ const Navbar = () => {
       x: 0,
       yPercent: -200,
       ease: "power4"
+    })
+    .to(".img-wrap", {
+      pointerEvents: "auto"
     })
     .to(".img-box", {
       duration: 1, 
