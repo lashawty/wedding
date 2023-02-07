@@ -25,7 +25,7 @@ const Images = ({getColor}) => {
     const img = first.querySelector('img')
     const textContent = first.querySelector('.text-content')
     const tl = gsap.timeline();
-    tl.to(first, {rotateY: 180, backgroundColor: '#fff',})
+    tl.to(first, { backgroundColor: '#fff',})
     .to(img, {opacity: 0},">")
     .to(textContent, {
       opacity: 1,
@@ -72,7 +72,7 @@ const Images = ({getColor}) => {
     const goDown = () => {
       console.log('render');
       isChangeClass = true
-      gsap.to('.first', {rotateY: 0, background: ''})
+      gsap.to('.first', {background: ''})
       gsap.to('.first img',{opacity: 1})
       gsap.to('.first .text-content', {opacity: 0})
       const arr = ['.first','.fifth','.fourth','.third','.second']
