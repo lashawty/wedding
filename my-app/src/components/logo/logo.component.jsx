@@ -9,7 +9,12 @@ const LogoWrap = () => {
 
   const lottieRef = useRef();
   useEffect(() => {
-    lottieRef.current.setSpeed(1.6);
+    lottieRef.current.setSpeed(2);
+    gsap.to('.lottie', {
+      y: 40,
+      scale: 1.2,
+      duration: 2
+    })
   }, []);
 
   const dnone = () => {
@@ -17,7 +22,7 @@ const LogoWrap = () => {
     entry.classList.add('dnone')
   }
 
-  const handleAnimationComplete = () => {
+  const handleAnimationComplete = (e) => {
     gsap.to('.entry', {
       opacity: 0,
       onComplete: ()=>{

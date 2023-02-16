@@ -31,26 +31,27 @@ const Navbar = () => {
         amount: .3,
         from: "edges",
       },
-      ease: "back.in"
+      ease: "power4.in"
     })
     .to(".img-wrap", {
       pointerEvents: "none"
     })
-    .to('.list', {
+    .to('.list li', {
       duration: 1, 
-      yPercent: 0,  
-      ease: "power4",
-      delay: 1,
+      xPercent: 0,
+      stagger: .2,
+      ease: "power4.out",
     });
     console.log('info-leave');
   } else {
     gsap.to('.form-wrap', {duration: 1, x: 0})
     gsap.to('.info-show', {duration: 1, y: 0})
     gsap.to('.info-close', {duration: 1, y: 0})
-    tl.to('.list', {
+    tl.to('.list li', {
       duration: 1, 
-      yPercent: -200,
-      ease: "power4"
+      xPercent: -200,
+      stagger: .2,
+      ease: "power4.in"
     })
     .to(".img-wrap", {
       pointerEvents: "auto"
@@ -62,7 +63,7 @@ const Navbar = () => {
         amount: .3,
         from: "edges",
       },
-      ease: "back.out"
+      ease: "power4.out"
     })
     console.log('info-back');
   }
@@ -79,7 +80,7 @@ const Navbar = () => {
     gsap.to('.form-close', {duration: 1, y: -1 * buttonHeight})
     gsap.to('.form-container',{
       pointerEvents: "auto"
-    })
+    }, "<")
     tl.to(".img-box", {
       duration: 1, 
       xPercent: -200, 
@@ -87,13 +88,12 @@ const Navbar = () => {
         amount: .3,
         from: "edges",
       },
-      ease: "back.in"
+      ease: "power4.in"
     })
     .to(".img-wrap", {
       pointerEvents: "none"
     })
     .to('.box', {
-      duration: 1,
       xPercent: 0,
       opacity: 1,
       stagger: .2,
@@ -108,16 +108,14 @@ const Navbar = () => {
       pointerEvents: "none"
     })
     tl.to('.box', {
-      duration: 1,
-      xPercent: 100,
+      xPercent: 150,
       stagger: .2,
-      opacity: 0,
-      ease: "power4.out"
+      // opacity: 0,
+      ease: "power2.out"
     })
     .to(".img-wrap", {
       pointerEvents: "auto"
     })
-
     .to(".img-box", {
       duration: 1, 
       xPercent: -50, 
@@ -125,7 +123,7 @@ const Navbar = () => {
         amount: .3,
         from: "edges",
       },
-      ease: "back.out"
+      ease: "power4.in"
     })
     console.log('form-back');
   }
