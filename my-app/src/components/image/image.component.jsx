@@ -1,5 +1,5 @@
 import "./images.styles.sass";
-import React, {useEffect, useState, useRef, useLayoutEffect} from "react";
+import React, {useEffect, useState, useRef, useLayoutEffect, useContext} from "react";
 import pictureArr from "../picture/picture.component";
 import gsap from "gsap";
 import {Observer} from "gsap/Observer";
@@ -88,8 +88,6 @@ const Images = ({getColor}) => {
       const currentFirst = document.querySelector(".first");
       const showBg = currentFirst.getAttribute("bg");
       setBg(showBg);
-      const showColor = currentFirst.getAttribute("color");
-      setColor(showColor);
     };
     let ctx = gsap.context(() => {
     let fired = false;
@@ -123,16 +121,7 @@ const Images = ({getColor}) => {
     }
   }, [element]);
 
-  useEffect(() => {
-    const selectedElement = document.querySelector(element);
-    if (selectedElement) {
-      const showColor = selectedElement.getAttribute("color");
-      setColor(showColor);
-      if (getColor) {
-        getColor(showColor);
-      }
-    }
-  }, [element]);
+  
 
    return (
     <div className="img-container" >

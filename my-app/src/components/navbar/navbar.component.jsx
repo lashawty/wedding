@@ -77,6 +77,9 @@ const Navbar = () => {
     gsap.to('.info-wrap', {duration: 1, x: -200});
     gsap.to('.form-show', {duration: 1, y: -1 * buttonHeight})
     gsap.to('.form-close', {duration: 1, y: -1 * buttonHeight})
+    gsap.to('.form-container',{
+      pointerEvents: "auto"
+    })
     tl.to(".img-box", {
       duration: 1, 
       xPercent: -200, 
@@ -89,26 +92,32 @@ const Navbar = () => {
     .to(".img-wrap", {
       pointerEvents: "none"
     })
-    .to('.form-container', {
-      duration: 2,
-      x: 0,
-      yPercent: 0,  
-      ease: "power4"
+    .to('.box', {
+      duration: 1,
+      xPercent: 0,
+      opacity: 1,
+      stagger: .2,
+      ease: "power4.in"
     });
     console.log('form-leave');
   } else {
     gsap.to('.info-wrap', {duration: 1, x: 0});
     gsap.to('.form-show', {duration: 1, y: 0})
     gsap.to('.form-close', {duration: 1, y: 0})
-    tl.to('.form-container', {
+    gsap.to('.form-container',{
+      pointerEvents: "none"
+    })
+    tl.to('.box', {
       duration: 1,
-      x: 0,
-      yPercent: -200,
-      ease: "power4"
+      xPercent: 100,
+      stagger: .2,
+      opacity: 0,
+      ease: "power4.out"
     })
     .to(".img-wrap", {
       pointerEvents: "auto"
     })
+
     .to(".img-box", {
       duration: 1, 
       xPercent: -50, 
@@ -132,11 +141,11 @@ const handleFormClick = () => {
   return (
     <nav className='nav'>
       <Info handleClick={handleInfoClick}/>
-      <div className='title tracking-in-expand-fwd-top'>
+      <a href='index.html' className='title tracking-in-expand-fwd-top'>
         <h2>2023</h2>
         <h1>Sean & Chloe's wedding</h1>
         <h2>OCTOBER 15th</h2>
-      </div>
+      </a>
       <FormWrap handleClick={handleFormClick}/>
     </nav>
   );

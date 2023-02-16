@@ -1,5 +1,5 @@
 import "./list.styles.sass";
-import { useState} from "react";
+import { useState } from "react";
 import { gsap } from "gsap";
 import pic1 from '../picture/1.jpg'
 import pic2 from '../picture/2.jpg'
@@ -46,27 +46,31 @@ const dataArr = [
 
 const List = ({ children }) => {
   const [activeKey, setActiveKey] = useState(null);
-
   const handleClick = (event, key) => {
     const list =  document.querySelector('.list')
     const currentLi = event.currentTarget
-    const otherLi = list.querySelectorAll('li')
+    const LiArr = list.querySelectorAll('li')
+    LiArr.forEach((e) => {if (e !== currentLi) {
+      e.classList.add('other-li')
+    }})
     const currentContent = event.currentTarget.querySelector('.list-content')
-    // 抓距離上方的距離 list的padding top
-    let getListPaddingString = window.getComputedStyle(list).getPropertyValue('top')
-    let paddingTopNumber = parseInt(getListPaddingString);
-    
-    let getDistanceY = currentLi.getBoundingClientRect().y - paddingTopNumber 
 
-    //
+    // 抓距離上方的距離 list的padding top
+    let getListTopString = window.getComputedStyle(list).getPropertyValue('top')
+    let topNumber = parseInt(getListTopString)
+    let navPaddingTop = 20
+    console.log(currentLi.getBoundingClientRect().y);
+    let getDistanceY = currentLi.getBoundingClientRect().y - topNumber - navPaddingTop
+    
     if (activeKey === key) {
-      gsap.to(otherLi, { opacity: 1, delay: .5, xPercent: 0, });
-      gsap.to(currentLi, { opacity: 1, y: 0, xPercent:0});
+      gsap.to('.other-li', { opacity: 1, delay: .8, xPercent: 0, stagger: .2});
+      LiArr.forEach((e) => {e.classList.remove('other-li')})
+      gsap.to(currentLi, { opacity: 1, y: 0,ease: 'power4.out', duration: 1});
       gsap.to(currentContent, {opacity:0, y: 20})
       setActiveKey(null);
     } else {
-      gsap.to(otherLi, { opacity: 0, xPercent: 120});
-      gsap.to(currentLi, { opacity: 1, y: (getDistanceY * -1), delay: .5, xPercent: 0},);
+      gsap.to('.other-li', { opacity: 0, xPercent: 120, stagger: .2});
+      gsap.to(currentLi, { opacity: 1, y: (getDistanceY * -1), delay: .8, ease:'power4.out', duration: 1}, );
       gsap.to(currentContent, {y: 0,delay: 1, opacity: 1})
       setActiveKey(key);
     }

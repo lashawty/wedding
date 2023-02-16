@@ -52,13 +52,13 @@ const Form =()=>{
   }
   return (
     <div className='form-container'>
-      <div className='title-wrap'>
+      <div className='title-wrap box'>
         <h3>Form</h3>
         <p>表單</p>
       </div>
       <form className='input-wrap'>
         {inputArr.map((data) =>(
-          <div className='input-box' key={data.title}>
+          <div className='input-box box' key={data.title}>
             <label>{data.title}</label>
             <input
               className='form-input' 
@@ -71,7 +71,7 @@ const Form =()=>{
           </div>
         ))}
         <div
-          className='input-submit'
+          className='input-submit box'
           onClick={handleSubmit}
         >
           <p className='submit-eng'>Send</p>
