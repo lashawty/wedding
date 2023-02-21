@@ -97,7 +97,7 @@ const Navbar = () => {
       xPercent: 0,
       opacity: 1,
       stagger: .2,
-      ease: "power4.in"
+      ease: "power4.out"
     });
     console.log('form-leave');
   } else {
@@ -108,7 +108,7 @@ const Navbar = () => {
       pointerEvents: "none"
     })
     tl.to('.box', {
-      xPercent: 150,
+      xPercent: 180,
       stagger: .2,
       // opacity: 0,
       ease: "power2.out"
