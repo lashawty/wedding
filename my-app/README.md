@@ -2,6 +2,7 @@
 
 # React x GSAP
 ## [連結](https://lashawty.github.io/wedding/index.html)
+###### tags: `gsap`, `react`
 
 ## 互動式圖片區塊
 
