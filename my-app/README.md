@@ -15,6 +15,7 @@
 
 ![](https://i.imgur.com/uCObdlc.png)
 
+[試算表連結](https://reurl.cc/a1Rn63)
 ### 送出後會將資料送至此試算表
 
 ![](https://i.imgur.com/GlHV4B6.png)
